@@ -1,0 +1,5 @@
+﻿Project: Vivo_ICS_35_S
+SKU: HTC Generic ROM for Global
+ROM Build ID: 423547
+Build ID: 423548; SKU: HTC Generic ROM for Global default; CID: default; MNS: default
+Datetime: 2012/09/07 22:14:12

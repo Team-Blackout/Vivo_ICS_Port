@@ -1,0 +1,6 @@
+TaskID : 281519
+Project : VIVO_ICS_35_S
+SKU : HTC WWE[405]
+ROM Ver : 4.14.405.2
+Customization Id : 423547
+RCMS Id : 154
