@@ -100,6 +100,10 @@ ifelse(
     run_program("/sbin/grep","androidboot.mid=PD9814000","/proc/cmdline") == "0",
     (
         ui_print("    Installing Telus HD files ...");
+        delete("/system/etc/soundimage/Sound_Original_Recording.txt");
+        delete("/system/etc/soundimage/Sound_Phone_Original_HP_WB.txt");
+        delete("/system/etc/soundimage/Sound_Phone_Original_REC_WB.txt");
+        delete("/system/etc/soundimage/Sound_Phone_Original_SPK_WB.txt");
         package_extract_dir("devices/telus/system", "/system");
     )
 );
@@ -108,6 +112,10 @@ ifelse(
     run_program("/sbin/grep","androidboot.mid=PD9812000","/proc/cmdline") == "0",
     (
         ui_print("    Installing Inspire 4G files ...");
+        delete("/system/etc/soundimage/Sound_Original_Recording.txt");
+        delete("/system/etc/soundimage/Sound_Phone_Original_HP_WB.txt");
+        delete("/system/etc/soundimage/Sound_Phone_Original_REC_WB.txt");
+        delete("/system/etc/soundimage/Sound_Phone_Original_SPK_WB.txt");
         package_extract_dir("devices/inspire/system", "/system");
     )
 );

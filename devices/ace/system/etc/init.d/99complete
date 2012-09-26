@@ -1,0 +1,32 @@
+#!/system/bin/sh
+# cleanup execute once scripts...
+sleep 5
+
+if [ -e /system/etc/init.d/00banner ];
+then
+   rm -r /system/etc/init.d/00banner;
+fi;
+
+if [ -e /system/etc/init.d/03firstboot ];
+then
+   rm -r /system/etc/init.d/03firstboot;
+fi;
+
+if [ -e /system/etc/init.d/20userinit ];
+then
+   rm -r /system/etc/init.d/20userinit;
+fi;
+
+if [ -e /system/bin/modelid_cfg.sh ];
+then
+   rm -r /system/bin/modelid_cfg.sh;
+fi;
+
+if [ -e /system/bin/verify_cache_partition_size.sh ];
+then
+   rm -r /system/bin/verify_cache_partition_size.sh;
+fi;
+
+sync;
+
+rm -r /system/etc/init.d/99complete

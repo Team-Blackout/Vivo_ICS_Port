@@ -1,0 +1,7 @@
+#!/system/bin/sh
+
+sync;
+
+setprop cm.filesystem.ready 1;
+
+/system/etc/mkshrc
