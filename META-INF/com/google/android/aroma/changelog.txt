@@ -1,0 +1,76 @@
+<b><#selectbg_g>v3.1.1</#></b>
+<*>~*~FUll WIPE ADVISED~*~</*>
+<*>Fixed Sound on Devices</*>
+
+<b><#selectbg_g>v3.1.0</#></b>
+<*>~*~FUll WIPE REQUIRED~*~</*>
+<*>New kernel Blackout BeastMode v1.5</*>
+<*>Added new device (HTC MyTouch 4G)</*>
+<*>Removed andrev_oc and related files due to causing lag issues.</*>
+<*>removed duplicate entries from build.prop</*>
+<*>Fixed FM Radio (Fully Functional)</*>
+<*>Updated busybox to 1.20.2</*>
+<*>Included Beats audio components for Desire HD</*>
+<*>Updated frameworks to include new APN's</*>
+<*>Fixed APN's for Virgin Mobile</*>
+<*>Fixed issue with camera and flash</*>
+<*>Fixed issue with video recording locking up and rebooting</*>
+<*>Fixed SMS 160 char issues</*>
+<*>Fixed module preload script not loading modules properly</*>
+<*>Fixed MMS send recieve issues</*>
+<*>Fixed Data signal drop while recieving MMS</*>
+<*>More tweaks added</*>
+<*>Fixed BT Hogging CPU after shutdown</*>
+
+<b><#selectbg_g>v3.0.0</#></b>
+<*>~*~FUll WIPE REQUIRED~*~</*>
+<*>Rebase to Incredible S 4.10.405.1 (Android 4.0.4)</*>
+<*>Camera fixed AND Recording 480p and 720P WITH audio</*>
+<*>Camera - Removed Stereo Recording and Front Facing Cam/Mirror App</*>
+<*>Blackout BeastMode Kernel V1.0</*>
+<*>New OC Values</*>
+<*>Re-Wrote Tweaks App</*>
+<*>Few new tweaks add (more to be added ota style ;))</*>
+<*>Exclusive Blackout Skin v1.0 with Sense 4.0 Style Clock Widget (default)</*>
+<*>And New Team Member...be gentle with him...</*>
+
+<b><#selectbg_g>v2.1</#></b>
+<*>Rebase to 2.31.401.2</*>
+<*>Added Aroma Backup Apps Option During Full Wipe Install</*>
+<*>Added Custom OC Option for Install (Andrev Daemon)</*>
+<*>Added Custom Language Option for Install</*>
+<*>Bluetooth 100% Fix with Mic</*>
+<*>Weather Sounds FC Fixed</*>
+<*>More Blackout Tweaks</*>
+<*>Modded HTCListen.apk for Beats, Dolby, and SRS Sound</*>
+<*>SMS Limit Fixed</*>
+<*>New Blackout Kernel</*>
+<*>More Aroma Additions</*>
+<*>Updated Aroma Installer to Latest</*>
+
+<b><#selectbg_g>v2.0</#></b>
+<*>Rebased to 2.28.709.1</*>
+<*>Added Aroma Installer (Obviously :] )</*>
+<*>Modded services.jar and PCSC.apk for USB Mount</*>
+<*>Modded services.jar for Disabling HTC Signature Checking</*>
+<*>Removed All HTC and Goolge Logging Files</*>
+<*>Tweaked The framework-res.apk for More Animation Speed</*>
+<*>Fixed Specific Device Detection for Sound and Info</*>
+<*>Added APM (Advanced Power Menu)</*>
+<*>Added Extended Quicksettings</*>
+<*>Modded HTCListen.apk for Beats, Dolby, and SRS Sound</*>
+<*>Added a New Member to the Team: Welcome cstayton :]</*>
+<*>Added New Blackout Tweaks</*>
+<*>Removed Mirror App (No Front Cam, So Not Needed)</*>
+
+<b><#selectbg_g>v1.1</#></b>
+<*>Sound fixed for Telus and Inspire users</*>
+<*>Wifi fixed</*>
+<*>BT Fixed (a2dp also)</*>
+<*>Added Sense 4.0 Wallpapers</*>
+<*>Beats and other sound enhancements added to music player</*>
+<*>System files cleaned up a bit</*>
+<*>Optimized here and there (whatever that means :p)</*>
+
+<b><#selectbg_g>v1.0</#></b>
+<*>Initial release</*>

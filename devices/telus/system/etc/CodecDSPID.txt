@@ -1,0 +1,27 @@
+Header, Ace_B25_soundeffet_2011_0719
+## Group for phone ##
+Phone_Default,/system/etc/soundimage/Sound_Dualmic.txt
+Phone_Handset_Dualmic,/system/etc/soundimage/Sound_Dualmic_EP.txt
+Phone_Speaker_Dualmic,/system/etc/soundimage/Sound_Dualmic_SPK.txt
+
+## Group for playback ## 
+Playback_Default,/system/etc/soundimage/Sound_Original.txt
+Playback_Speaker_Default,
+
+## Group for recording ##
+Record_Default,
+Record_V_Mono,
+Record_V_IMIC_Landscape_Stereo,
+Record_V_IMIC_Protrait_Stereo,
+Record_A_IMIC_Mono,
+Record_A_EMIC_Mono,
+
+## Group for FM ##
+FM_Headset,
+FM_Speaker,
+
+#################
+SKYPE_Handset,
+SKYPE_Speaker,
+SPYPE_Headset,
+

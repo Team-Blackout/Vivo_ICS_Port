@@ -1,0 +1,218 @@
+﻿##
+#
+# AROMA Installer 2.51 - AROMA Installer Test Script Configuration
+#       (c) 2011-2012 by Ahmad Amarullah
+#           amarullz - xda-developers
+#           http://www.amarullz.com/
+#
+#       Binary Version  : 2.51
+#       Binary Codename : Edelweis
+#
+##
+
+calibrate("2.1845","39","2.1854","35");
+
+ifelse(
+  run_program("/sbin/grep","androidboot.mid=PD9812000","/proc/cmdline") == "0",
+  (
+calibrate_matrix("54405.00","-225.00","-800580.00","1530.00","93500.00","-624805.00","110832.50","20");
+  )
+);
+
+ifelse(
+  run_program("/sbin/grep","androidboot.mid=PD9814000","/proc/cmdline") == "0",
+  (
+calibrate_matrix("54405.00","-225.00","-800580.00","1530.00","93500.00","-624805.00","110832.50","20");
+  )
+);
+
+ifelse(
+  run_program("/sbin/grep","androidboot.mid=PD1510000","/proc/cmdline") == "0",
+  (
+calibrate_matrix("57555.00","-720.00","-63967.50","-85.00","96220.00","-223787.50","120651.00","20");
+  )
+);
+
+ini_set("rom_name",             "Blackout ICS Incredible");
+ini_set("rom_version",          "3.1.1");
+ini_set("rom_author",           "Team Blackout");
+ini_set("rom_device",           "Desire HD/Inspire 4G/MyTouch 4G");
+ini_set("rom_date",             "August 14, 2012");
+
+splash(4000, "Logo");
+
+fontresload( "0", "ttf/DroidSans.ttf;ttf/DroidSansArabic.ttf;ttf/DroidSansFallback.ttf;", "12" );
+
+selectbox(
+    "Select Language",
+    "Please select installer language that you want to use in this installation:",
+    "@confirm",
+    "lang.prop",
+  
+    "English",            "Welcome to Installer",                                        1,
+    "Indonesian",         "Selamat datang di Installer",                                 0,
+    "Espanol",            "Bienvenido al Instalador",                                    0,
+    "Simplified Chinesse","欢迎到安装",                                                    0,
+    "Arabic",             "مرحبا بكم في المثبت",                                               0,       
+    "French",             "Bienvenue dans l'installateur",                               0,
+    "Russian",            "Добро пожаловать в установщик",                               0,
+	"Italian",            "Benvenuti Installer",                                         0,
+	"Hebrew",             "ברוכים הבאים להתקנה",										 0,
+	"Germany",            "Willkommen bei Installer",									 0
+);
+
+if prop("lang.prop","selected.0")=="1" then
+  loadlang("langs/en.lang");
+  fontresload( "0", "ttf/DroidSans.ttf", "12" );
+  fontresload( "1", "ttf/DroidSans.ttf", "18" );
+endif;
+
+if prop("lang.prop","selected.0")=="2" then
+  loadlang("langs/id.lang");
+  fontresload( "0", "ttf/DroidSans.ttf", "12" );
+  fontresload( "1", "ttf/DroidSans.ttf", "18" );
+endif;
+
+if prop("lang.prop","selected.0")=="3" then
+  loadlang("langs/es.lang");
+  fontresload( "0", "ttf/DroidSans.ttf", "12" );
+  fontresload( "1", "ttf/DroidSans.ttf", "18" );
+endif;
+
+if prop("lang.prop","selected.0")=="4" then
+  loadlang("langs/cn.lang");
+  fontresload( "0", "ttf/DroidSansFallback.ttf;ttf/DroidSans.ttf", "12" );
+  fontresload( "1", "ttf/DroidSansFallback.ttf;ttf/DroidSans.ttf", "18" );
+endif;
+
+if prop("lang.prop","selected.0")=="5" then
+  loadlang("langs/ar.lang");
+  fontresload( "0", "ttf/DroidSansArabic.ttf;ttf/DroidSans.ttf", "12" );
+  fontresload( "1", "ttf/DroidSansArabic.ttf;ttf/DroidSans.ttf", "18" );
+endif;
+
+if prop("lang.prop","selected.0")=="6" then
+  loadlang("langs/fr.lang");
+  fontresload( "0", "ttf/DroidSans.ttf", "12" );
+  fontresload( "1", "ttf/DroidSans.ttf", "18" );
+endif;
+
+if prop("lang.prop","selected.0")=="7" then
+  loadlang("langs/ru.lang");
+  fontresload( "0", "ttf/DroidSans.ttf", "12" );
+  fontresload( "1", "ttf/DroidSans.ttf", "18" );
+endif;
+
+if prop("lang.prop","selected.0")=="8" then
+  loadlang("langs/it.lang");
+  fontresload( "0", "ttf/DroidSans.ttf", "12" );
+  fontresload( "1", "ttf/DroidSans.ttf", "18" );
+endif;
+
+if prop("lang.prop","selected.0")=="9" then
+  loadlang("langs/he.lang");
+  fontresload( "0", "ttf/DroidSans.ttf", "12" );
+  fontresload( "1", "ttf/DroidSans.ttf", "18" );
+endif;
+
+if prop("lang.prop","selected.0")=="10" then
+  loadlang("langs/de.lang");
+  fontresload( "0", "ttf/DroidSans.ttf", "12" );
+  fontresload( "1", "ttf/DroidSans.ttf", "18" );
+endif;
+
+selectbox(
+    "Select Theme",
+  
+    "Please select installer theme that you want to use in this installation:",
+    "@personalize",
+    "theme.prop",
+    "Generic",            "Unthemed AROMA Installer",                                    1,
+    "MIUI Theme",         "MIUI Theme by mickey-r & amarullz",                           0,
+    "ICS Theme",          "Ice Cream Sandwitch by DemonWav & amarullz",                  0,
+    "MIUI 4 Theme",       "MIUI 4/ICS Theme by amarullz & Lennox",                       0,
+    "Sense Theme",        "HTC Sense Theme by amarullz",                                 0
+);
+
+if prop("theme.prop","selected.0")=="2" then
+  theme("miui");
+endif;
+
+if prop("theme.prop","selected.0")=="3" then
+  theme("ics");
+endif;
+
+if prop("theme.prop","selected.0")=="4" then
+  theme("miui4");
+endif;
+
+if prop("theme.prop","selected.0")=="5" then
+  theme("sense");
+endif;
+
+viewbox(
+    "Welcome",
+    "You are about to flash <b>"+
+	  ini_get("rom_name")+
+	"</b> for <b>"+ini_get("rom_device")+"</b>.\n\n"+
+    
+    "AROMA Installer was the first and the only Touch and Customizable "+
+    "ANDROID ROM Installer in the World.\n\n"+
+	
+      "  VERSION\t: <b><#selectbg_g>"+ini_get("rom_version")+"</#></b>\n"+
+      "  AUTHOR\t: <b><#selectbg_g>"+ini_get("rom_author")+"</#></b>\n"+
+      "  RELEASED\t: <b><#selectbg_g>"+ini_get("rom_date")+"</#></b>\n\n\n"+
+
+    "Press Next to Continue the Installation...",
+    "@welcome"
+);
+
+textbox(
+    "Changelog",
+    "Blackout ICS Incredible Changelog",
+    "@update",
+    resread("changelog.txt")
+);
+
+agreebox(
+    "Terms and Conditions",
+    "Please read the Terms of Use...",
+    "@license",
+    resread("license.txt"),
+    "I Agree with this Terms of Use...",
+    "Please check the agreement..."
+);
+
+selectbox(
+    "Do you want to perform a full wipe before flashing?",
+    "Please Select:",
+    "@alert",
+    "wipe.prop",
+    
+    "Install without wiping","",0,
+    "Perform a full wipe","",1
+  
+);
+
+viewbox(
+  "Ready To Install",
+  "All informations has been collected for installation.\n\n"+
+  "Click Next To Start Installation...",
+  "@info"
+);
+
+install(
+  "Installing",
+  "Installing Blackout ICS Incredible...\nPlease Wait Until it Finished...",
+  "@install"
+);
+
+ini_set("text_next", "Finish");
+
+viewbox(
+  "Installation Completed",
+  "<#080>Congratulation...</#>\n\n"+
+  "Blackout ICS Incredible has been installed successfully.\n\n"+
+  "Press Finish, and Reboot your phone.\n\nEnjoy! :D",
+  "@info"
+);
