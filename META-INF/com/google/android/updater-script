@@ -3,8 +3,9 @@
 show_progress(0.500000, 0);
 
 assert(
-    getprop("ro.product.device") == "ace" ||
-    getprop("ro.product.device") == "glacier"
+    getprop("ro.product.device") == "ace"     ||
+    getprop("ro.product.device") == "glacier" ||
+    getprop("ro.product.device") == "vivo"
 );
 
 show_progress(0.500000, 40);
