@@ -55,18 +55,18 @@ case "$target" in
         ;;
 esac
 
-case "$target" in
-     "msm7x30")
-        echo "ondemand" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-        echo 50000 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
-        echo 90 > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold
-        echo 1 > /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy
-        echo 4 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
-        chown root.system /sys/devices/system/cpu/mfreq
-        chmod 220 /sys/devices/system/cpu/mfreq
-        chown system /sys/power/perflock
-        ;;
-esac
+#case "$target" in
+#     "msm7x30")
+#        echo "ondemand" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+#        echo 50000 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate
+#        echo 90 > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold
+#        echo 1 > /sys/devices/system/cpu/cpufreq/ondemand/io_is_busy
+#        echo 4 > /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
+#        chown root.system /sys/devices/system/cpu/mfreq
+#        chmod 220 /sys/devices/system/cpu/mfreq
+#        chown system /sys/power/perflock
+#        ;;
+#esac
 
 case "$target" in
      "msm7k")
