@@ -1,6 +1,11 @@
-<b><#selectbg_g>v3.1.1</#></b>
+<b><#selectbg_g>v3.2</#></b>
 <*>~*~FUll WIPE ADVISED~*~</*>
+<*>Rebased to 4.14.405.2</*>
 <*>Fixed Sound on Devices</*>
+<*>Added Incredible S Support</*>
+<*>Fixed OC Governor on First Boot</*>
+<*>Fixed Button Backlight</*>
+<*>Improved Performance and Battery Life</*>
 
 <b><#selectbg_g>v3.1.0</#></b>
 <*>~*~FUll WIPE REQUIRED~*~</*>

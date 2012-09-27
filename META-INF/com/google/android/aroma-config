@@ -34,10 +34,10 @@ calibrate_matrix("57555.00","-720.00","-63967.50","-85.00","96220.00","-223787.5
 );
 
 ini_set("rom_name",             "Blackout ICS Incredible");
-ini_set("rom_version",          "3.1.1");
+ini_set("rom_version",          "3.2");
 ini_set("rom_author",           "Team Blackout");
 ini_set("rom_device",           "Desire HD/Inspire 4G/MyTouch 4G");
-ini_set("rom_date",             "August 14, 2012");
+ini_set("rom_date",             "September 27, 2012");
 
 splash(4000, "Logo");
 
