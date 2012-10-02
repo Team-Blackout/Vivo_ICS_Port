@@ -5,93 +5,248 @@ show_progress(0.500000, 0);
 assert(
     getprop("ro.product.device") == "ace"     ||
     getprop("ro.product.device") == "glacier" ||
+    getprop("ro.product.device") == "incs"    ||
+    getprop("ro.product.device") == "vigor"   ||
     getprop("ro.product.device") == "vivo"
 );
 
 show_progress(0.500000, 40);
 
-mount("ext4", "EMMC", "/dev/block/mmcblk0p26", "/data");
-mount("ext4", "EMMC", "/dev/block/mmcblk0p25", "/system");
+ifelse(
+    getprop("ro.product.device") == "vigor",
+    (
+        mount("ext4", "EMMC", "/dev/block/mmcblk0p35", "/data");
+        mount("ext4", "EMMC", "/dev/block/mmcblk0p29", "/system");
+    )
+);
+ifelse(
+    getprop("ro.product.device") == "evita",
+    (
+        mount("ext4", "EMMC", "/dev/block/mmcblk0p35", "/data");
+        mount("ext4", "EMMC", "/dev/block/mmcblk0p33", "/system");
+    )
+);
+ifelse(
+    getprop("ro.product.device") == "incs"  ||
+    getprop("ro.product.device") == "vivo",
+    (
+        mount("ext4", "MMC", "/dev/block/mmcblk0p26", "/data");
+        mount("ext4", "MMC", "/dev/block/mmcblk0p25", "/system");
+    )
+);
+ifelse(
+    getprop("ro.product.device") == "ace"     ||
+    getprop("ro.product.device") == "glacier",
+    (
+        mount("ext4", "EMMC", "/dev/block/mmcblk0p26", "/data");
+        mount("ext4", "EMMC", "/dev/block/mmcblk0p25", "/system");
+    )
+);
+
 package_extract_dir("tmp", "/tmp");
 set_perm_recursive(0, 0, 0777, 0777, "/tmp/");
 
 if
     file_getprop("/tmp/aroma-data/wipe.prop","selected.0") == "2"
 then
-set_progress(0.02);
-ui_print("@  Executing Full Wipe");
-ui_print("-> Preparing System for full wipe");
+    set_progress(0.02);
+    ui_print("@  Executing Full Wipe");
+    ui_print("-> Preparing System for full wipe");
+    
+    ui_print("-> Erasing & Formatting /cache as EXT4");
+    unmount("/cache");
+    run_program("/sbin/erase_image", "cache");
+    ifelse(
+        getprop("ro.product.device") == "vigor",
+        (
+            format("ext4", "EMMC", "/dev/block/mmcblk0p36");
+        )
+    );
+    ifelse(
+        getprop("ro.product.device") == "incs"  ||
+        getprop("ro.product.device") == "vivo",
+        (
+            format("ext4", "MMC", "/dev/block/mmcblk0p27");
+        )
+    );
+    ifelse(
+        getprop("ro.product.device") == "ace"     ||
+        getprop("ro.product.device") == "glacier",
+        (
+            format("ext4", "EMMC", "/dev/block/mmcblk0p27");
+        )
+    );
+    run_program("/sbin/sleep", "2");
+    
+    ui_print("-> Erasing & Formatting /system as EXT4");
+    unmount("/system");
+    run_program("/sbin/erase_image", "system");
+    ifelse(
+        getprop("ro.product.device") == "vigor",
+        (
+            format("ext4", "EMMC", "/dev/block/mmcblk0p29");
+        )
+    );
+    ifelse(
+        getprop("ro.product.device") == "incs"  ||
+        getprop("ro.product.device") == "vivo",
+        (
+            format("ext4", "MMC", "/dev/block/mmcblk0p25");
+        )
+    );
+    ifelse(
+        getprop("ro.product.device") == "ace"     ||
+        getprop("ro.product.device") == "glacier",
+        (
+            format("ext4", "EMMC", "/dev/block/mmcblk0p25");
+        )
+    );
+    run_program("/sbin/sleep", "2");
+    
+    set_progress(0.03);
+    ui_print("-> Erasing & Formatting /data as EXT4");
+    unmount("/data");
+    run_program("/sbin/erase_image", "userdata");
+    ifelse(
+        getprop("ro.product.device") == "vigor",
+        (
+            format("ext4", "EMMC", "/dev/block/mmcblk0p35");
+        )
+    );
+    ifelse(
+        getprop("ro.product.device") == "incs" ||
+        getprop("ro.product.device") == "vivo",
+        (
+            format("ext4", "MMC", "/dev/block/mmcblk0p26");
+        )
+    );
+    ifelse(
+        getprop("ro.product.device") == "ace"     ||
+        getprop("ro.product.device") == "glacier",
+        (
+            format("ext4", "EMMC", "/dev/block/mmcblk0p26");
+        )
+    );
+    run_program("/sbin/sleep", "2");
+    
+    set_progress(0.04);
+    ui_print("-> Erasing /boot Partition");
+    unmount("/boot");
+    run_program("/sbin/erase_image", "boot");
+    run_program("/sbin/sleep", "2");
+    
+    set_progress(0.05);
+    ui_print("-> Removing System Files from SD Card");
+    delete_recursive("/sdcard/.android_secure");
+    delete_recursive("/sdcard/.bookmark_thumb1");
+    delete_recursive("/sdcard/.data/footprints");
+    delete_recursive("/sdcard/.data/mail");
+    delete_recursive("/sdcard/Android/data/com.android.providers.media");
+    delete_recursive("/sdcard/Android/data/com.google.android.apps.genie.geniewidget.news-content-cache");
+    delete_recursive("/sdcard/Android/data/com.google.android.apps.maps");
+    delete_recursive("/sdcard/.data/navigator/Data/Temporary");
+    delete_recursive("/sdcard/LazyList");
+    delete_recursive("/sdcard/LOST.DIR");
+    run_program("/sbin/sleep", "2");
 
-ui_print("-> Erasing & Formatting /cache as EXT4");
-unmount("/cache");
-run_program("/sbin/erase_image", "cache");
-format("ext4", "EMMC", "/dev/block/mmcblk0p27");
-run_program("/sbin/sleep", "2");
-
-ui_print("-> Erasing & Formatting /system as EXT4");
-unmount("/system");
-run_program("/sbin/erase_image", "system");
-format("ext4", "EMMC", "/dev/block/mmcblk0p25");
-run_program("/sbin/sleep", "2");
-
-set_progress(0.03);
-ui_print("-> Erasing & Formatting /data as EXT4");
-unmount("/data");
-run_program("/sbin/erase_image", "userdata");
-format("ext4", "EMMC", "/dev/block/mmcblk0p26");
-run_program("/sbin/sleep", "2");
-
-set_progress(0.04);
-ui_print("-> Erasing /boot Partition");
-unmount("/boot");
-run_program("/sbin/erase_image", "boot");
-run_program("/sbin/sleep", "2");
-
-set_progress(0.05);
-ui_print("-> Removing System Files from SD Card");
-delete_recursive("/sdcard/.android_secure");
-delete_recursive("/sdcard/.bookmark_thumb1");
-delete_recursive("/sdcard/.data/footprints");
-delete_recursive("/sdcard/.data/mail");
-delete_recursive("/sdcard/Android/data/com.android.providers.media");
-delete_recursive("/sdcard/Android/data/com.google.android.apps.genie.geniewidget.news-content-cache");
-delete_recursive("/sdcard/Android/data/com.google.android.apps.maps");
-delete_recursive("/sdcard/.data/navigator/Data/Temporary");
-delete_recursive("/sdcard/LazyList");
-delete_recursive("/sdcard/LOST.DIR");
-run_program("/sbin/sleep", "2");
-
-set_progress(0.06);
-ui_print("-> Checking Filesystems for Errors");
-run_program("/sbin/e2fsck", "-p", "/dev/block/mmcblk0p25");
-run_program("/sbin/e2fsck", "-p", "/dev/block/mmcblk0p26");
-run_program("/sbin/e2fsck", "-p", "/dev/block/mmcblk0p27");
-run_program("/sbin/sleep", "2");
+    set_progress(0.06);
+    ui_print("-> Checking Filesystems for Errors");
+	ifelse(
+        getprop("ro.product.device") == "vigor",
+        (
+            run_program("/sbin/e2fsck", "-p", "/dev/block/mmcblk0p29");
+            run_program("/sbin/e2fsck", "-p", "/dev/block/mmcblk0p35");
+            run_program("/sbin/e2fsck", "-p", "/dev/block/mmcblk0p36");
+        )
+    );
+    ifelse(
+        getprop("ro.product.device") == "ace"     ||
+        getprop("ro.product.device") == "glacier" ||
+        getprop("ro.product.device") == "incs"    ||
+        getprop("ro.product.device") == "vivo",
+        (
+            run_program("/sbin/e2fsck", "-p", "/dev/block/mmcblk0p25");
+            run_program("/sbin/e2fsck", "-p", "/dev/block/mmcblk0p26");
+            run_program("/sbin/e2fsck", "-p", "/dev/block/mmcblk0p27");
+        )
+    );
+    run_program("/sbin/sleep", "2");
 endif;
 
 set_progress(0.07);
 show_progress(0.07, 9);
 ui_print("@  Flashing Data");
 ui_print("-> Writing Data");
-mount("ext4", "EMMC", "/dev/block/mmcblk0p26", "/data");
+ifelse(
+    getprop("ro.product.device") == "vigor",
+    (
+        mount("ext4", "EMMC", "/dev/block/mmcblk0p35", "/data");
+    )
+);
+ifelse(
+    getprop("ro.product.device") == "incs"  ||
+    getprop("ro.product.device") == "vivo",
+    (
+        mount("ext4", "MMC", "/dev/block/mmcblk0p26", "/data");
+    )
+);
+ifelse(
+    getprop("ro.product.device") == "ace"     ||
+    getprop("ro.product.device") == "glacier",
+    (
+        mount("ext4", "EMMC", "/dev/block/mmcblk0p26", "/data");
+    )
+);
 package_extract_dir("data", "/data");
 
 set_progress(0.08);
 show_progress(0.7,1380);
-format("ext4", "EMMC", "/dev/block/mmcblk0p25");
-ui_print("@  Flashing System");
-ui_print("-> Writing System");
-mount("ext4", "EMMC", "/dev/block/mmcblk0p25", "/system");
-
 ifelse(
-    getprop("ro.board.platform") == "msm7x30",
+    getprop("ro.product.device") == "vigor",
     (
-        delete_recursive("/data/system.vendor");
-        run_program("/sbin/mkdir","-p","/data/system.vendor");
-        set_perm_recursive(1000, 1000, 0775, 0644, "/data/system.vendor");
-        symlink("/data/system.vendor", "/system/vendor");
+        format("ext4", "EMMC", "/dev/block/mmcblk0p29");
     )
 );
+ifelse(
+    getprop("ro.product.device") == "incs"  ||
+    getprop("ro.product.device") == "vivo",
+    (
+        format("ext4", "MMC", "/dev/block/mmcblk0p25");
+    )
+);
+ifelse(
+    getprop("ro.product.device") == "ace"     ||
+    getprop("ro.product.device") == "glacier",
+    (
+        format("ext4", "EMMC", "/dev/block/mmcblk0p25");
+    )
+);
+ui_print("@  Flashing System");
+ui_print("-> Writing System");
+ifelse(
+    getprop("ro.product.device") == "vigor",
+    (
+        mount("ext4", "EMMC", "/dev/block/mmcblk0p29", "/system");
+    )
+);
+ifelse(
+    getprop("ro.product.device") == "incs"  ||
+    getprop("ro.product.device") == "vivo",
+    (
+        mount("ext4", "MMC", "/dev/block/mmcblk0p25", "/system");
+    )
+);
+ifelse(
+    getprop("ro.product.device") == "ace"     ||
+    getprop("ro.product.device") == "glacier",
+    (
+        mount("ext4", "EMMC", "/dev/block/mmcblk0p25", "/system");
+    )
+);
+delete_recursive("/data/system.vendor");
+run_program("/sbin/mkdir","-p","/data/system.vendor");
+set_perm_recursive(1000, 1000, 0775, 0644, "/data/system.vendor");
+symlink("/data/system.vendor", "/system/vendor");
 
 package_extract_dir("system", "/system");
 assert(package_extract_dir("devices/" + getprop("ro.product.device") + "/system", "/system"));
@@ -205,6 +360,7 @@ symlink("/system/xbin/sqlite3", "/system/bin/sqlite3");
 symlink("/proc/calibration", "/system/etc/calibration");
 set_perm_recursive(0, 0, 0755, 0644, "/system");
 set_perm_recursive(0, 2000, 0755, 0755, "/system/bin");
+set_perm(0, 0, 0755, "/system/etc/mkshrc");
 set_perm(0, 0, 0755, "/system/etc/init.d");
 set_perm(0, 2000, 0755, 0755, "/system/etc/init.post_boot.sh");
 set_perm(0, 3003, 06755, "/system/bin/ip");
@@ -218,7 +374,6 @@ set_perm(1000, 1000, 0640, "/system/etc/bluetooth/auto_pairing.conf");
 set_perm(3002, 3002, 0444, "/system/etc/bluetooth/blacklist.conf");
 set_perm(1002, 1002, 0440, "/system/etc/dbus.conf");
 set_perm(1014, 2000, 0550, "/system/etc/dhcpcd/dhcpcd-run-hooks");
-set_perm(0, 0, 0755, "/system/etc/mkshrc");
 set_perm(0, 0, 04755, "/system/etc/ppp/ip-up-vpn");
 set_perm(0, 2000, 0550, "/system/etc/init.goldfish.sh");
 set_perm(0, 2000, 0755, "/system/xbin/sqlite3");
@@ -227,9 +382,15 @@ set_perm_recursive(0, 2000, 0755, 0755, "/system/xbin");
 set_perm_recursive(0, 2000, 0755, 0750, "/system/etc/init.d");
 set_perm(0, 0, 0755, "/system/etc/init.d");
 
-symlink("/system/etc/firmware/fw_bcm4329.bin", "/system/etc/firmware/fw_bcm4330_b2.bin");
-symlink("/system/etc/firmware/fw_bcm4329_apsta.bin", "/system/etc/firmware/fw_bcm4330_apsta_b2.bin");
-symlink("/system/etc/firmware/fw_bcm4329_p2p.bin", "/system/etc/firmware/fw_bcm4330_p2p_b2.bin");
+ifelse(
+    getprop("ro.product.device") == "ace"     ||
+    getprop("ro.product.device") == "glacier",
+    (
+        symlink("/system/etc/firmware/fw_bcm4329.bin", "/system/etc/firmware/fw_bcm4330_b2.bin");
+        symlink("/system/etc/firmware/fw_bcm4329_apsta.bin", "/system/etc/firmware/fw_bcm4330_apsta_b2.bin");
+        symlink("/system/etc/firmware/fw_bcm4329_p2p.bin", "/system/etc/firmware/fw_bcm4330_p2p_b2.bin");
+    )
+);
 
 delete("/system/bin/su");
 symlink("/system/xbin/su", "/system/bin/su");
@@ -249,13 +410,31 @@ delete_recursive("/data/dalvik-cache");
 unmount("/data");
 
 ui_print("-> Flashing Kernel");
-assert(package_extract_file("kernel/" + getprop("ro.product.device") + "/boot.img", "/tmp/boot.img"),
-       write_raw_image("/tmp/boot.img", "boot"),
-       delete("/tmp/boot.img"));
+package_extract_file("kernel/" + getprop("ro.product.device") + "/boot.img", "/tmp/boot.img");
+write_raw_image("/tmp/boot.img", "boot");
+delete("/tmp/boot.img");
 
 ui_print("-> Formatting Cache");
 unmount("/cache");
-format("ext4", "EMMC", "/dev/block/mmcblk0p27");
-
+ifelse(
+    getprop("ro.product.device") == "vigor",
+    (
+        format("ext4", "EMMC", "/dev/block/mmcblk0p36");
+    )
+);
+ifelse(
+    getprop("ro.product.device") == "incs"  ||
+    getprop("ro.product.device") == "vivo",
+    (
+        format("ext4", "MMC", "/dev/block/mmcblk0p27");
+    )
+);
+ifelse(
+    getprop("ro.product.device") == "ace"     ||
+    getprop("ro.product.device") == "glacier",
+    (
+        format("ext4", "EMMC", "/dev/block/mmcblk0p27");
+    )
+);
 set_progress(1);
 ui_print("-> Done.");

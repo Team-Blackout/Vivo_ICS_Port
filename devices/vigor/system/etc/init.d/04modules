@@ -1,0 +1,16 @@
+#!/system/bin/sh
+# cstayton @ Team Blackout
+# Pre-Load kernel modules 
+set e+
+MODPATH=/system/lib/modules
+
+sleep 1
+
+for i in `ls $MODPATH | grep -v kineto_gan.ko`
+do
+    insmod $MODPATH/$i
+done
+
+#Cleanup errant log files more than 7 days old
+find /devlog -mtime +7 -type f -exec rm -rf {} \;
+    echo " Module Pre-Load Complete";
