@@ -1,0 +1,3 @@
+#!/system/bin/sh
+#
+rm /system/etc/init.d/02smartassv2
