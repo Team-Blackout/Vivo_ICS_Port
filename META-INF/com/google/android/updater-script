@@ -376,13 +376,13 @@ set_perm_recursive(0, 2000, 0755, 0755, "/system/xbin");
 set_perm_recursive(0, 2000, 0755, 0750, "/system/etc/init.d");
 set_perm(0, 0, 0755, "/system/etc/init.d");
 
-ifelse(
+#ifelse(
     getprop("ro.product.device") == "ace"     ||
     getprop("ro.product.device") == "glacier",
     (
-        symlink("/system/etc/firmware/fw_bcm4329.bin", "/system/etc/firmware/fw_bcm4330_b2.bin");
-        symlink("/system/etc/firmware/fw_bcm4329_apsta.bin", "/system/etc/firmware/fw_bcm4330_apsta_b2.bin");
-        symlink("/system/etc/firmware/fw_bcm4329_p2p.bin", "/system/etc/firmware/fw_bcm4330_p2p_b2.bin");
+        symlink("fw_bcm4329.bin", "/system/etc/firmware/fw_bcm4330_b2.bin");
+        symlink("fw_bcm4329_apsta.bin", "/system/etc/firmware/fw_bcm4330_apsta_b2.bin");
+        symlink("fw_bcm4329_p2p.bin", "/system/etc/firmware/fw_bcm4330_p2p_b2.bin");
     )
 );
 
