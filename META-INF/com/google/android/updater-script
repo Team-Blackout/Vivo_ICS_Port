@@ -201,6 +201,7 @@ package_extract_dir("data", "/data");
 
 set_progress(0.08);
 show_progress(0.7,1380);
+unmount("/system");
 ifelse(
     getprop("ro.product.device") == "vigor",
     (

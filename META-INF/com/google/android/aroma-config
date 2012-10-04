@@ -5,45 +5,10 @@
 #           amarullz - xda-developers
 #           http://www.amarullz.com/
 #
-#       Binary Version  : 2.51
+#       Binary Version  : 2.55
 #       Binary Codename : Edelweis
 #
 ##
-
-# Desire HD
-calibrate("2.1845","39","2.1854","35");
-
-# Inspire 4G
-ifelse(
-  run_program("/sbin/grep","androidboot.mid=PD9812000","/proc/cmdline") == "0",
-  (
-    calibrate_matrix("54405.00","-225.00","-800580.00","1530.00","93500.00","-624805.00","110832.50","20");
-  )
-);
-
-# Telus Desire HD
-ifelse(
-  run_program("/sbin/grep","androidboot.mid=PD9814000","/proc/cmdline") == "0",
-  (
-    calibrate_matrix("54405.00","-225.00","-800580.00","1530.00","93500.00","-624805.00","110832.50","20");
-  )
-);
-
-# MyTouch 4G
-ifelse(
-  run_program("/sbin/grep","androidboot.mid=PD1510000","/proc/cmdline") == "0",
-  (
-    calibrate_matrix("57555.00","-720.00","-63967.50","-85.00","96220.00","-223787.50","120651.00","20");
-  )
-);
-
-# Rezound
-ifelse(
-  run_program("/sbin/grep","androidboot.mid=PH9810000","/proc/cmdline") == "0",
-  (
-    calibrate_matrix("54855.00","-315.00","758587.50","170.00","101065.00","-1164945.00","120794.25","20");
-  )
-);
 
 ini_set("rom_name",             "Blackout ICS Incredible");
 ini_set("rom_version",          "3.2");
@@ -59,7 +24,7 @@ ifelse(
 ifelse(
   run_program("/sbin/grep","androidboot.mid=PD9814000","/proc/cmdline") == "0",
   (
-    ini_set("rom_device",           "HTC Telus HD");
+    ini_set("rom_device",           "HTC Desire HD");
   )
 );
 ifelse(
@@ -78,7 +43,7 @@ ini_set("rom_date",             "September 27, 2012");
 
 splash(4000, "Logo");
 
-fontresload( "0", "ttf/DroidSans.ttf;ttf/DroidSansArabic.ttf;ttf/DroidSansFallback.ttf;", "12" );
+fontresload( "0", "ttf/Roboto-Regular.ttf;ttf/DroidSansArabic.ttf;ttf/DroidSansFallback.ttf;", "12" ); #-- Use sets of font (Font Family)
 
 selectbox(
     "Select Language",

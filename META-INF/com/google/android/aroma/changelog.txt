@@ -2,7 +2,9 @@
 <*>~*~FUll WIPE ADVISED~*~</*>
 <*>Rebased to 4.14.405.2</*>
 <*>Fixed Sound on Devices</*>
+<*>Fixed Auto-Brightness</*>
 <*>Added Incredible S Support</*>
+<*>Added Rezound Support</*>
 <*>Fixed OC Governor on First Boot</*>
 <*>Fixed Button Backlight</*>
 <*>Improved Performance and Battery Life</*>
