@@ -10,6 +10,9 @@
 #
 ##
 
+# Desire HD
+calibrate("2.1845","39","2.1854","35");
+
 # Inspire 4G
 ifelse(
   run_program("/sbin/grep","androidboot.mid=PD9812000","/proc/cmdline") == "0",
@@ -45,6 +48,8 @@ ifelse(
 ini_set("rom_name",             "Blackout ICS Incredible");
 ini_set("rom_version",          "3.2");
 ini_set("rom_author",           "Team Blackout");
+ini_set("rom_device",           "HTC Desire HD");
+
 ifelse(
   run_program("/sbin/grep","androidboot.mid=PD9812000","/proc/cmdline") == "0",
   (
@@ -54,7 +59,7 @@ ifelse(
 ifelse(
   run_program("/sbin/grep","androidboot.mid=PD9814000","/proc/cmdline") == "0",
   (
-    ini_set("rom_device",           "HTC Desire HD");
+    ini_set("rom_device",           "HTC Telus HD");
   )
 );
 ifelse(
