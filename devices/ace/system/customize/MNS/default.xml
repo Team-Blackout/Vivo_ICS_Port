@@ -50,7 +50,7 @@
     <module name="defaultWallpaper">
       <function>
         <set name="single">
-          <item name="defeault">color.jpg</item>
+          <item name="defeault">blackout_wallpaper.jpg</item>
         </set>
       </function>
     </module>
