@@ -43,7 +43,7 @@ fi
 				sed -i 's/ro.product.main_camera.*=.*/ro.product.main_camera=5M/g' /system/build.prop	
 				sed -i 's/ro.product.front_camera.*=.*/ro.product.front_camera=VGA/g' /system/build.prop
 				sed -i 's/ro.aa.modelid.*=.*/ro.aa.modelid=PD1510000/g' /system/build.prop
-				sed -i 's/ro.product.model.*=.*/ro.product.model=HTC Glacier/g' /system/build.prop
+				sed -i 's/ro.product.model.*=.*/ro.product.model=HTC MyTouch\ 4G/g' /system/build.prop
 				sed -i 's/ro.product.device.*=.*/ro.product.device=glacier/g' /system/build.prop
 				sed -i 's/ro.product.board.*=.*/ro.product.board=glacier/g' /system/build.prop					
 				sed -i 's/ro.build.host.*=.*/ro.build.host=ABM009/g' /system/build.prop
