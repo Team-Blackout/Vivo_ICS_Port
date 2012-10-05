@@ -1,27 +1,25 @@
-Header, Ace_B25_soundeffet_2011_0719
+Header, ACE_B18_soundeffet_2011_0826
 ## Group for phone ##
-Phone_Default,/system/etc/soundimage/Sound_Dualmic.txt
-Phone_Handset_Dualmic,/system/etc/soundimage/Sound_Dualmic_EP.txt
-Phone_Speaker_Dualmic,/system/etc/soundimage/Sound_Dualmic_SPK.txt
+Phone_Default,/system/etc/soundimage/Sound_Original_MCLK.txt
+Phone_Handset_Dualmic,/system/etc/soundimage/Sound_Original_MCLK.txt
+Phone_Speaker_Dualmic,/system/etc/soundimage/Sound_Original_MCLK.txt
+Phone_Headset,/system/etc/soundimage/Sound_Original_MCLK.txt
+Phone_HAC,/system/etc/soundimage/Sound_Original_MCLK.txt
+Phone_TTY,/system/etc/soundimage/Sound_Original_MCLK.txt
 
 ## Group for playback ## 
-Playback_Default,/system/etc/soundimage/Sound_Original.txt
-Playback_Speaker_Default,
+Playback_Default,/system/etc/soundimage/Sound_Original_MCLK.txt
+Playback_Speaker_Default,/system/etc/soundimage/Sound_Original_MCLK.txt
+Playback_A_Headset_SRS,/system/etc/soundimage/Sound_SRS_A_HP_MCLK.txt
+Playback_A_Speaker_SRS,/system/etc/soundimage/Sound_SRS_A_SPK_MCLK.txt
+Playback_V_Headset_SRS,/system/etc/soundimage/Sound_SRS_V_HP_MCLK.txt
+Playback_V_Speaker_SRS,/system/etc/soundimage/Sound_SRS_V_SPK_MCLK.txt
 
 ## Group for recording ##
-Record_Default,
-Record_V_Mono,
-Record_V_IMIC_Landscape_Stereo,
-Record_V_IMIC_Protrait_Stereo,
-Record_A_IMIC_Mono,
-Record_A_EMIC_Mono,
-
-## Group for FM ##
-FM_Headset,
-FM_Speaker,
-
-#################
-SKYPE_Handset,
-SKYPE_Speaker,
-SPYPE_Headset,
+Record_Default,/system/etc/soundimage/Sound_Original_MCLK.txt
+Record_V_Mono,/system/etc/soundimage/Sound_Original_MCLK.txt
+Record_V_IMIC_Landscape_Stereo,/system/etc/soundimage/Sound_Original_MCLK.txt
+Record_V_IMIC_Protrait_Stereo,/system/etc/soundimage/Sound_Original_MCLK.txt
+Record_A_IMIC_Mono,/system/etc/soundimage/Sound_Original_MCLK.txt
+Record_A_EMIC_Mono,/system/etc/soundimage/Sound_Original_MCLK.txt
 
