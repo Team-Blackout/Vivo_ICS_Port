@@ -177,7 +177,7 @@ textbox(
 );
 
 selectbox(
-    "Do you want to perform a full wipe before flashing?",
+    "Perform a full wipe?",
     "Please Select:",
     "@alert",
     "wipe.prop",
