@@ -174,9 +174,9 @@ ro.product.wifi=802.11 b/g/n
 # system props for telephony/data
 rild.libpath=/system/lib/libhtc_ril.so
 # RilLibPath for Ganlite by Godel_Chen
-# rild.libpath.ganlite=/system/lib/librilswitch.so
+rild.libpath.ganlite=/system/lib/librilswitch.so
 rilswitch.vendorlibpath=/system/lib/libhtc_ril.so
-# rilswitch.ganlibpath=/system/lib/libganril.so
+rilswitch.ganlibpath=/system/lib/libganril.so
 
 # Data settings
 ro.ril.gprsclass=12
