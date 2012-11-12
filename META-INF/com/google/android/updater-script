@@ -6,6 +6,7 @@ assert(
     getprop("ro.product.device") == "ace"     ||
     getprop("ro.product.device") == "glacier" ||
     getprop("ro.product.device") == "incs"    ||
+    getprop("ro.product.device") == "saga"    ||
     getprop("ro.product.device") == "vigor"   ||
     getprop("ro.product.device") == "vivo"
 );
@@ -28,6 +29,7 @@ ifelse(
 );
 ifelse(
     getprop("ro.product.device") == "incs"  ||
+    getprop("ro.product.device") == "saga"  ||
     getprop("ro.product.device") == "vivo",
     (
         mount("ext4", "MMC", "/dev/block/mmcblk0p26", "/data");
@@ -64,6 +66,7 @@ then
     );
     ifelse(
         getprop("ro.product.device") == "incs"  ||
+        getprop("ro.product.device") == "saga"  ||
         getprop("ro.product.device") == "vivo",
         (
             format("ext4", "MMC", "/dev/block/mmcblk0p27");
@@ -89,6 +92,7 @@ then
     );
     ifelse(
         getprop("ro.product.device") == "incs"  ||
+        getprop("ro.product.device") == "saga"  ||
         getprop("ro.product.device") == "vivo",
         (
             format("ext4", "MMC", "/dev/block/mmcblk0p25");
@@ -115,6 +119,7 @@ then
     );
     ifelse(
         getprop("ro.product.device") == "incs" ||
+        getprop("ro.product.device") == "saga" ||
         getprop("ro.product.device") == "vivo",
         (
             format("ext4", "MMC", "/dev/block/mmcblk0p26");
@@ -163,6 +168,7 @@ then
         getprop("ro.product.device") == "ace"     ||
         getprop("ro.product.device") == "glacier" ||
         getprop("ro.product.device") == "incs"    ||
+        getprop("ro.product.device") == "saga"    ||
         getprop("ro.product.device") == "vivo",
         (
             run_program("/sbin/e2fsck", "-p", "/dev/block/mmcblk0p25");
@@ -185,6 +191,7 @@ ifelse(
 );
 ifelse(
     getprop("ro.product.device") == "incs"  ||
+    getprop("ro.product.device") == "saga"  ||
     getprop("ro.product.device") == "vivo",
     (
         mount("ext4", "MMC", "/dev/block/mmcblk0p26", "/data");
@@ -210,6 +217,7 @@ ifelse(
 );
 ifelse(
     getprop("ro.product.device") == "incs"  ||
+    getprop("ro.product.device") == "saga"  ||
     getprop("ro.product.device") == "vivo",
     (
         format("ext4", "MMC", "/dev/block/mmcblk0p25");
@@ -232,6 +240,7 @@ ifelse(
 );
 ifelse(
     getprop("ro.product.device") == "incs"  ||
+    getprop("ro.product.device") == "saga"  ||
     getprop("ro.product.device") == "vivo",
     (
         mount("ext4", "MMC", "/dev/block/mmcblk0p25", "/system");
@@ -419,6 +428,7 @@ ifelse(
 );
 ifelse(
     getprop("ro.product.device") == "incs"  ||
+    getprop("ro.product.device") == "saga"  ||
     getprop("ro.product.device") == "vivo",
     (
         format("ext4", "MMC", "/dev/block/mmcblk0p27");
