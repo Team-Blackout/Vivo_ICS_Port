@@ -16,6 +16,12 @@ ini_set("rom_author",           "Team Blackout");
 ini_set("rom_device",           "HTC Desire HD");
 
 ifelse(
+  run_program("/sbin/grep","androidboot.mid=PC1010000","/proc/cmdline") == "0",
+  (
+    ini_set("rom_device",           "HTC Desire Z");
+  )
+);
+ifelse(
   run_program("/sbin/grep","androidboot.mid=PG8810000","/proc/cmdline") == "0",
   (
     ini_set("rom_device",           "HTC Desire S");

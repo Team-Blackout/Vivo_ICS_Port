@@ -54,6 +54,26 @@ fi
 				sed -i 's/ro.ril.hsdpa.category.*=.*/ro.ril.hsdpa.category=10/g' /system/build.prop
 		fi
 
+# Check for Vision, apply board specific settings for build.prop
+#
+	cat /proc/cmdline | egrep -q '(PC1010000)'
+		if [ $? = 0 ];
+			then
+				sed -i 's/ro.product.display_resolution.*=.*/ro.product.display_resolution=3.7\ inch\ WVGA\ resolution/g' /system/build.prop
+				sed -i 's/ro.product.main_camera.*=.*/ro.product.main_camera=5M/g' /system/build.prop
+				sed -i 's/ro.product.processor.*=.*/ro.product.processor=800MHZ/g' /system/build.prop
+				sed -i 's/ro.product.ram.*=.*/ro.product.ram=512MB/g' /system/build.prop
+				sed -i 's/ro.aa.modelid.*=.*/ro.aa.modelid=PC1010000/g' /system/build.prop
+				sed -i 's/ro.product.model.*=.*/ro.product.model=HTC\ Desire\ Z/g' /system/build.prop
+				sed -i 's/ro.product.device.*=.*/ro.product.device=vision/g' /system/build.prop
+				sed -i 's/ro.product.board.*=.*/ro.product.board=vision/g' /system/build.prop
+				sed -i 's/ro.build.host.*=.*/ro.build.host=ABM009/g' /system/build.prop
+				sed -i 's/ro.build.user.*=.*/ro.build.user=user/g' /system/build.prop
+				sed -i 's/ro.build.product.*=.*/# ro.build.product=/g' /system/build.prop
+				sed -i 's/ro.ril.hsupa.category.*=.*/ro.ril.hsupa.category=7/g' /system/build.prop
+				sed -i 's/ro.ril.hsdpa.category.*=.*/ro.ril.hsdpa.category=10/g' /system/build.prop
+		fi
+
 # Check for Saga, apply board specific settings for build.prop
 #
 	cat /proc/cmdline | egrep -q '(PG8810000)|(PG8811000)|(PG8812000)|(PG8813000)'

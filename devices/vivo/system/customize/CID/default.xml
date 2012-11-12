@@ -378,6 +378,9 @@
           <item type="boolean" name="Slovenian">yes</item>
           <item type="boolean" name="Serbian">yes</item>
           <item type="boolean" name="Bulgarian">yes</item>
+          <item type="boolean" name="Estonian">yes</item>
+          <item type="boolean" name="Latvian">yes</item>
+          <item type="boolean" name="Lithuanian">yes</item>
         </set>
       </function>
       <function name="IME_sip_set">
@@ -394,7 +397,7 @@
     <module name="deviceData">
       <function>
         <set name="single">
-          <item name="device_name">HTC Incredible S S710e</item>
+          <item name="device_name">HTC Incredible S with Beats Audio S710e</item>
         </set>
       </function>
     </module>
@@ -425,7 +428,7 @@
     <module name="properties">
       <function>
         <set name="single">
-          <item name="market_name">HTC Incredible S S710e</item>
+          <item name="market_name">HTC Incredible S with Beats Audio</item>
         </set>
       </function>
     </module>

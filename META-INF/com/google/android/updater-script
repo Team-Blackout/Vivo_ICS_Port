@@ -7,7 +7,8 @@ assert(
     getprop("ro.product.device") == "glacier" ||
     getprop("ro.product.device") == "incs"    ||
     getprop("ro.product.device") == "saga"    ||
-#    getprop("ro.product.device") == "vigor"   ||
+#    getprop("ro.product.device") == "vigor"  ||
+    getprop("ro.product.device") == "vision"  ||
     getprop("ro.product.device") == "vivo"
 );
 
@@ -31,7 +32,8 @@ ifelse(
 );
 ifelse(
     getprop("ro.product.device") == "ace"     ||
-    getprop("ro.product.device") == "glacier",
+    getprop("ro.product.device") == "glacier" ||
+    getprop("ro.product.device") == "vision",
     (
         mount("ext4", "EMMC", "/dev/block/mmcblk0p26", "/data");
         mount("ext4", "EMMC", "/dev/block/mmcblk0p25", "/system");
@@ -67,7 +69,8 @@ then
     );
     ifelse(
         getprop("ro.product.device") == "ace"     ||
-        getprop("ro.product.device") == "glacier",
+        getprop("ro.product.device") == "glacier" ||
+        getprop("ro.product.device") == "vision",
         (
             format("ext4", "EMMC", "/dev/block/mmcblk0p27");
         )
@@ -93,7 +96,8 @@ then
     );
     ifelse(
         getprop("ro.product.device") == "ace"     ||
-        getprop("ro.product.device") == "glacier",
+        getprop("ro.product.device") == "glacier" ||
+        getprop("ro.product.device") == "vision",
         (
             format("ext4", "EMMC", "/dev/block/mmcblk0p25");
         )
@@ -120,7 +124,8 @@ then
     );
     ifelse(
         getprop("ro.product.device") == "ace"     ||
-        getprop("ro.product.device") == "glacier",
+        getprop("ro.product.device") == "glacier" ||
+        getprop("ro.product.device") == "vision",
         (
             format("ext4", "EMMC", "/dev/block/mmcblk0p26");
         )
@@ -162,6 +167,7 @@ then
         getprop("ro.product.device") == "glacier" ||
         getprop("ro.product.device") == "incs"    ||
         getprop("ro.product.device") == "saga"    ||
+        getprop("ro.product.device") == "vision"  ||
         getprop("ro.product.device") == "vivo",
         (
             run_program("/sbin/e2fsck", "-p", "/dev/block/mmcblk0p25");
@@ -192,7 +198,8 @@ ifelse(
 );
 ifelse(
     getprop("ro.product.device") == "ace"     ||
-    getprop("ro.product.device") == "glacier",
+    getprop("ro.product.device") == "glacier" ||
+    getprop("ro.product.device") == "vision",
     (
         mount("ext4", "EMMC", "/dev/block/mmcblk0p26", "/data");
     )
@@ -218,7 +225,8 @@ ifelse(
 );
 ifelse(
     getprop("ro.product.device") == "ace"     ||
-    getprop("ro.product.device") == "glacier",
+    getprop("ro.product.device") == "glacier" ||
+    getprop("ro.product.device") == "vision",
     (
         format("ext4", "EMMC", "/dev/block/mmcblk0p25");
     )
@@ -241,7 +249,8 @@ ifelse(
 );
 ifelse(
     getprop("ro.product.device") == "ace"     ||
-    getprop("ro.product.device") == "glacier",
+    getprop("ro.product.device") == "glacier" ||
+    getprop("ro.product.device") == "vision",
     (
         mount("ext4", "EMMC", "/dev/block/mmcblk0p25", "/system");
     )
@@ -381,7 +390,8 @@ set_perm(0, 0, 0755, "/system/etc/init.d");
 
 ifelse(
     getprop("ro.product.device") == "ace"     ||
-    getprop("ro.product.device") == "glacier",
+    getprop("ro.product.device") == "glacier" ||
+    getprop("ro.product.device") == "vision",
     (
         symlink("fw_bcm4329.bin", "/system/etc/firmware/fw_bcm4330_b2.bin");
         symlink("fw_bcm4329_apsta.bin", "/system/etc/firmware/fw_bcm4330_apsta_b2.bin");
@@ -429,7 +439,8 @@ ifelse(
 );
 ifelse(
     getprop("ro.product.device") == "ace"     ||
-    getprop("ro.product.device") == "glacier",
+    getprop("ro.product.device") == "glacier" ||
+    getprop("ro.product.device") == "vision",
     (
         format("ext4", "EMMC", "/dev/block/mmcblk0p27");
     )

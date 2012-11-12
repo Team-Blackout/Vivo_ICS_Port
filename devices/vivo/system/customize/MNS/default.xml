@@ -33,7 +33,6 @@
       </function>
       <function name="default_IKB_settings_checked">
         <set name="single">
-          <item name="checked_list">Handwriting;ZuhYin;</item>
           <item name="checked_list_latin">English;German;France;Italian;Spanish;Russian;Czech;Danish;Swedish;Norwegian;Dutch;Polish;Portugal;Greek;Finnish;</item>
         </set>
       </function>
@@ -51,7 +50,7 @@
     <module name="defaultWallpaper">
       <function>
         <set name="single">
-          <item name="defeault">color.jpg</item>
+          <item name="defeault">blackout_wallpaper.jpg</item>
         </set>
       </function>
     </module>
@@ -1056,7 +1055,7 @@
           <item name="span_x">4</item>
           <item name="span_y">2</item>
         </set>
-      </function>
+        </function>
       <function name="default_quicklaunch">
         <set name="plenty">
           <item name="package">com.android.htccontacts</item>
@@ -1095,7 +1094,7 @@
         <set name="single" max="1">
           <item type="file_name" name="image">blackout_wallpaper.jpg</item>
         </set>
-      </function>
+      </function>	  
       <function name="2_wallpaper">
         <set name="single" max="1">
           <item type="file_name" name="image">cellular.jpg</item>
@@ -1486,7 +1485,7 @@
         </set>
         <set name="plenty" max="1">
           <item name="scenename">Play</item>
-          <item name="scene_preview_large">scenes_picker_04.png</item>
+          <item name="scene_preview_large">scenes_picker_4_no.png</item>
         </set>
         <set name="plenty" max="1">
           <item name="scenename">Travel</item>
@@ -1932,7 +1931,9 @@
         <set name="single" />
       </function>
       <function name="ua_string_short_desktop">
-        <set name="single" />
+        <set name="single">
+          <item name="value">HTC_IncredibleS_Beats_X315e</item>
+        </set>
       </function>
       <!-- UA profile URL -->
       <function name="ua_profile">
@@ -2013,7 +2014,7 @@
     <module name="MMS">
       <function name="ua_string">
         <set name="single">
-          <item name="value">HTC_IncredibleS_S710e/1.0</item>
+          <item name="value">HTC_IncredibleS_Beats/1.0</item>
         </set>
       </function>
     </module>
