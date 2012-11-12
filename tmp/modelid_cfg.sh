@@ -7,7 +7,8 @@
 # VISION   TMUS MODELID PC1010000
 # MAHIMAHI TMUS MODELID PB9910000
 # GLACIER  TMUS MODELID PD1510000
-# Espresso TMUS MODELID PB6510000
+# ESPRESSO TMUS MODELID PB6510000
+# SAGA     TMUS MODELID PG8810000 | PG8811000 | PG8812000 | PG8813000
 #
 
 kineto=/system/app/MS-HTCEMR-KNT20-02-A0-GB-02.apk
@@ -51,6 +52,25 @@ fi
 				sed -i 's/ro.build.product.*=.*/# ro.build.product=/g' /system/build.prop
 				sed -i 's/ro.ril.hsupa.category.*=.*/ro.ril.hsupa.category=7/g' /system/build.prop
 				sed -i 's/ro.ril.hsdpa.category.*=.*/ro.ril.hsdpa.category=10/g' /system/build.prop
+		fi
+
+# Check for Saga, apply board specific settings for build.prop
+#
+	cat /proc/cmdline | egrep -q '(PG8810000)|(PG8811000)|(PG8812000)|(PG8813000)'
+		if [ $? = 0 ];
+			then
+				sed -i 's/ro.product.display_resolution.*=.*/ro.product.display_resolution=3.7 inch WVGA resolution/g' /system/build.prop	
+				sed -i 's/ro.product.main_camera.*=.*/ro.product.main_camera=5M/g' /system/build.prop	
+				sed -i 's/ro.product.front_camera.*=.*/ro.product.front_camera=VGA/g' /system/build.prop
+				sed -i 's/ro.aa.modelid.*=.*/ro.aa.modelid=PG8810000,PG8811000,PG8812000,PG8813000/g' /system/build.prop
+				sed -i 's/ro.product.model.*=.*/ro.product.model=HTC Desire\ S/g' /system/build.prop
+				sed -i 's/ro.product.device.*=.*/ro.product.device=saga/g' /system/build.prop
+				sed -i 's/ro.product.board.*=.*/ro.product.board=saga/g' /system/build.prop					
+				sed -i 's/ro.build.host.*=.*/ro.build.host=ABM032/g' /system/build.prop
+				sed -i 's/ro.build.user.*=.*/ro.build.user=user/g' /system/build.prop
+				sed -i 's/ro.build.product.*=.*/# ro.build.product=/g' /system/build.prop
+				sed -i 's/ro.ril.hsupa.category.*=.*/ro.ril.hsupa.category=6/g' /system/build.prop
+				sed -i 's/ro.ril.hsdpa.category.*=.*/ro.ril.hsdpa.category=8/g' /system/build.prop
 		fi
 		
 # Check for spade; if NAM model update DSP and GPS config
