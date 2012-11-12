@@ -7,26 +7,19 @@ assert(
     getprop("ro.product.device") == "glacier" ||
     getprop("ro.product.device") == "incs"    ||
     getprop("ro.product.device") == "saga"    ||
-    getprop("ro.product.device") == "vigor"   ||
+#    getprop("ro.product.device") == "vigor"   ||
     getprop("ro.product.device") == "vivo"
 );
 
 show_progress(0.500000, 40);
 
-ifelse(
-    getprop("ro.product.device") == "vigor",
-    (
-        mount("ext4", "EMMC", "/dev/block/mmcblk0p35", "/data");
-        mount("ext4", "EMMC", "/dev/block/mmcblk0p29", "/system");
-    )
-);
-ifelse(
-    getprop("ro.product.device") == "evita",
-    (
-        mount("ext4", "EMMC", "/dev/block/mmcblk0p35", "/data");
-        mount("ext4", "EMMC", "/dev/block/mmcblk0p33", "/system");
-    )
-);
+#ifelse(
+#    getprop("ro.product.device") == "vigor",
+#    (
+#        mount("ext4", "EMMC", "/dev/block/mmcblk0p35", "/data");
+#        mount("ext4", "EMMC", "/dev/block/mmcblk0p29", "/system");
+#    )
+#);
 ifelse(
     getprop("ro.product.device") == "incs"  ||
     getprop("ro.product.device") == "saga"  ||
@@ -58,12 +51,12 @@ then
     ui_print("-> Erasing & Formatting /cache as EXT4");
     unmount("/cache");
     run_program("/sbin/erase_image", "cache");
-    ifelse(
-        getprop("ro.product.device") == "vigor",
-        (
-            format("ext4", "EMMC", "/dev/block/mmcblk0p36");
-        )
-    );
+#    ifelse(
+#        getprop("ro.product.device") == "vigor",
+#        (
+#            format("ext4", "EMMC", "/dev/block/mmcblk0p36");
+#        )
+#    );
     ifelse(
         getprop("ro.product.device") == "incs"  ||
         getprop("ro.product.device") == "saga"  ||
@@ -84,12 +77,12 @@ then
     ui_print("-> Erasing & Formatting /system as EXT4");
     unmount("/system");
     run_program("/sbin/erase_image", "system");
-    ifelse(
-        getprop("ro.product.device") == "vigor",
-        (
-            format("ext4", "EMMC", "/dev/block/mmcblk0p29");
-        )
-    );
+#    ifelse(
+#        getprop("ro.product.device") == "vigor",
+#        (
+#            format("ext4", "EMMC", "/dev/block/mmcblk0p29");
+#        )
+#    );
     ifelse(
         getprop("ro.product.device") == "incs"  ||
         getprop("ro.product.device") == "saga"  ||
@@ -111,12 +104,12 @@ then
     ui_print("-> Erasing & Formatting /data as EXT4");
     unmount("/data");
     run_program("/sbin/erase_image", "userdata");
-    ifelse(
-        getprop("ro.product.device") == "vigor",
-        (
-            format("ext4", "EMMC", "/dev/block/mmcblk0p35");
-        )
-    );
+#    ifelse(
+#        getprop("ro.product.device") == "vigor",
+#        (
+#            format("ext4", "EMMC", "/dev/block/mmcblk0p35");
+#        )
+#    );
     ifelse(
         getprop("ro.product.device") == "incs" ||
         getprop("ro.product.device") == "saga" ||
@@ -156,14 +149,14 @@ then
 
     set_progress(0.06);
     ui_print("-> Checking Filesystems for Errors");
-	ifelse(
-        getprop("ro.product.device") == "vigor",
-        (
-            run_program("/sbin/e2fsck", "-p", "/dev/block/mmcblk0p29");
-            run_program("/sbin/e2fsck", "-p", "/dev/block/mmcblk0p35");
-            run_program("/sbin/e2fsck", "-p", "/dev/block/mmcblk0p36");
-        )
-    );
+#	ifelse(
+#        getprop("ro.product.device") == "vigor",
+#        (
+#            run_program("/sbin/e2fsck", "-p", "/dev/block/mmcblk0p29");
+#            run_program("/sbin/e2fsck", "-p", "/dev/block/mmcblk0p35");
+#            run_program("/sbin/e2fsck", "-p", "/dev/block/mmcblk0p36");
+#        )
+#    );
     ifelse(
         getprop("ro.product.device") == "ace"     ||
         getprop("ro.product.device") == "glacier" ||
@@ -183,12 +176,12 @@ set_progress(0.07);
 show_progress(0.07, 9);
 ui_print("@  Flashing Data");
 ui_print("-> Writing Data");
-ifelse(
-    getprop("ro.product.device") == "vigor",
-    (
-        mount("ext4", "EMMC", "/dev/block/mmcblk0p35", "/data");
-    )
-);
+#ifelse(
+#    getprop("ro.product.device") == "vigor",
+#    (
+#        mount("ext4", "EMMC", "/dev/block/mmcblk0p35", "/data");
+#    )
+#);
 ifelse(
     getprop("ro.product.device") == "incs"  ||
     getprop("ro.product.device") == "saga"  ||
@@ -209,12 +202,12 @@ package_extract_dir("data", "/data");
 set_progress(0.08);
 show_progress(0.7,1380);
 unmount("/system");
-ifelse(
-    getprop("ro.product.device") == "vigor",
-    (
-        format("ext4", "EMMC", "/dev/block/mmcblk0p29");
-    )
-);
+#ifelse(
+#    getprop("ro.product.device") == "vigor",
+#    (
+#        format("ext4", "EMMC", "/dev/block/mmcblk0p29");
+#    )
+#);
 ifelse(
     getprop("ro.product.device") == "incs"  ||
     getprop("ro.product.device") == "saga"  ||
@@ -232,12 +225,12 @@ ifelse(
 );
 ui_print("@  Flashing System");
 ui_print("-> Writing System");
-ifelse(
-    getprop("ro.product.device") == "vigor",
-    (
-        mount("ext4", "EMMC", "/dev/block/mmcblk0p29", "/system");
-    )
-);
+#ifelse(
+#    getprop("ro.product.device") == "vigor",
+#    (
+#        mount("ext4", "EMMC", "/dev/block/mmcblk0p29", "/system");
+#    )
+#);
 ifelse(
     getprop("ro.product.device") == "incs"  ||
     getprop("ro.product.device") == "saga"  ||
@@ -420,12 +413,12 @@ delete("/tmp/boot.img");
 
 ui_print("-> Formatting Cache");
 unmount("/cache");
-ifelse(
-    getprop("ro.product.device") == "vigor",
-    (
-        format("ext4", "EMMC", "/dev/block/mmcblk0p36");
-    )
-);
+#ifelse(
+#    getprop("ro.product.device") == "vigor",
+#    (
+#        format("ext4", "EMMC", "/dev/block/mmcblk0p36");
+#    )
+#);
 ifelse(
     getprop("ro.product.device") == "incs"  ||
     getprop("ro.product.device") == "saga"  ||

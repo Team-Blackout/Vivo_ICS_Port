@@ -75,12 +75,12 @@ ifelse(
     ini_set("rom_device",           "HTC MyTouch4G");
   )
 );
-ifelse(
-  run_program("/sbin/grep","androidboot.mid=PH9810000","/proc/cmdline") == "0",
-  (
-    ini_set("rom_device",           "HTC Rezound");
-  )
-);
+#ifelse(
+#  run_program("/sbin/grep","androidboot.mid=PH9810000","/proc/cmdline") == "0",
+#  (
+#    ini_set("rom_device",           "HTC Rezound");
+#  )
+#);
 ini_set("rom_date",             "September 27, 2012");
 
 splash(4000, "Logo");
