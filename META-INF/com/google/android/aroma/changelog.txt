@@ -4,7 +4,10 @@
 <*>Fixed Sound on Devices</*>
 <*>Fixed Auto-Brightness</*>
 <*>Added Incredible S Support</*>
-<*>Added Rezound Support</*>
+<*>Added Desire Z Support</*>
+<*>Added Desire S Support</*>
+<*>Fixed Colors on HTC IME</*>
+<*>Zipaligned with Latest</*>
 <*>Fixed OC Governor on First Boot</*>
 <*>Fixed Button Backlight</*>
 <*>Improved Performance and Battery Life</*>
